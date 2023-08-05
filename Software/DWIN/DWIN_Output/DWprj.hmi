@@ -1,0 +1,10 @@
+[INIT]
+PICFIX=1
+VARCount=64
+Version=-1
+SCREENDSIZE=320X240
+SPADDRESS=5000
+[IMG]
+0=0_Cover.bmp
+1=1_Page1.bmp
+2=2_Page2.bmp

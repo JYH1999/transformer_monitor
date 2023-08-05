@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/jquery.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/ResizeSensor.js"></script>
+
+            <link rel="stylesheet"  href="https://assets.pyecharts.org/assets/jquery-ui.css">
+
+</head>
+<body>
+    <style>.box {  }; </style>
+        <button onclick="downloadCfg()">Save Config</button>
+    <div class="box">
+                <div id="tempgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_tempgauge = echarts.init(
+            document.getElementById('tempgauge'), 'white', {renderer: 'canvas'});
+        var option_tempgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}\u2103"
+            },
+            "name": "\u5b9e\u65f6\u6e29\u5ea6",
+            "min": 0,
+            "max": 100,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "\u5b9e\u65f6\u6e29\u5ea6",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "\u5b9e\u65f6\u6e29\u5ea6"
+            ],
+            "selected": {
+                "\u5b9e\u65f6\u6e29\u5ea6": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}\u2103",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/temp_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_tempgauge.setOption(option_tempgauge);
+    </script>
+<br/>                <div id="humidgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_humidgauge = echarts.init(
+            document.getElementById('humidgauge'), 'white', {renderer: 'canvas'});
+        var option_humidgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}%"
+            },
+            "name": "\u5b9e\u65f6\u6e7f\u5ea6",
+            "min": 0,
+            "max": 100,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "\u5b9e\u65f6\u6e7f\u5ea6",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "\u5b9e\u65f6\u6e7f\u5ea6"
+            ],
+            "selected": {
+                "\u5b9e\u65f6\u6e7f\u5ea6": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/humid_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_humidgauge.setOption(option_humidgauge);
+    </script>
+<br/>                <div id="avrmsgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_avrmsgauge = echarts.init(
+            document.getElementById('avrmsgauge'), 'white', {renderer: 'canvas'});
+        var option_avrmsgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}V"
+            },
+            "name": "AVRMS",
+            "min": 0,
+            "max": 600,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "AVRMS",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "AVRMS"
+            ],
+            "selected": {
+                "AVRMS": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/avrms_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_avrmsgauge.setOption(option_avrmsgauge);
+    </script>
+<br/>                <div id="bvrmsgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_bvrmsgauge = echarts.init(
+            document.getElementById('bvrmsgauge'), 'white', {renderer: 'canvas'});
+        var option_bvrmsgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}V"
+            },
+            "name": "BVRMS",
+            "min": 0,
+            "max": 600,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "BVRMS",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "BVRMS"
+            ],
+            "selected": {
+                "BVRMS": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/bvrms_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_bvrmsgauge.setOption(option_bvrmsgauge);
+    </script>
+<br/>                <div id="cvrmsgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_cvrmsgauge = echarts.init(
+            document.getElementById('cvrmsgauge'), 'white', {renderer: 'canvas'});
+        var option_cvrmsgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}V"
+            },
+            "name": "CVRMS",
+            "min": 0,
+            "max": 600,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "CVRMS",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "CVRMS"
+            ],
+            "selected": {
+                "CVRMS": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/cvrms_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_cvrmsgauge.setOption(option_cvrmsgauge);
+    </script>
+<br/>                <div id="airmsgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_airmsgauge = echarts.init(
+            document.getElementById('airmsgauge'), 'white', {renderer: 'canvas'});
+        var option_airmsgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}A"
+            },
+            "name": "AIRMS",
+            "min": 0,
+            "max": 75,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "AIRMS",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "AIRMS"
+            ],
+            "selected": {
+                "AIRMS": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/airms_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_airmsgauge.setOption(option_airmsgauge);
+    </script>
+<br/>                <div id="birmsgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_birmsgauge = echarts.init(
+            document.getElementById('birmsgauge'), 'white', {renderer: 'canvas'});
+        var option_birmsgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}A"
+            },
+            "name": "BIRMS",
+            "min": 0,
+            "max": 75,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "BIRMS",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "BIRMS"
+            ],
+            "selected": {
+                "BIRMS": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/birms_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_birmsgauge.setOption(option_birmsgauge);
+    </script>
+<br/>                <div id="cirmsgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_cirmsgauge = echarts.init(
+            document.getElementById('cirmsgauge'), 'white', {renderer: 'canvas'});
+        var option_cirmsgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}A"
+            },
+            "name": "CIRMS",
+            "min": 0,
+            "max": 75,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "CIRMS",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "CIRMS"
+            ],
+            "selected": {
+                "CIRMS": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/cirms_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_cirmsgauge.setOption(option_cirmsgauge);
+    </script>
+<br/>                <div id="nirmsgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_nirmsgauge = echarts.init(
+            document.getElementById('nirmsgauge'), 'white', {renderer: 'canvas'});
+        var option_nirmsgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}A"
+            },
+            "name": "NIRMS",
+            "min": 0,
+            "max": 75,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "NIRMS",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "NIRMS"
+            ],
+            "selected": {
+                "NIRMS": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/nirms_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_nirmsgauge.setOption(option_nirmsgauge);
+    </script>
+<br/>                <div id="awattgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_awattgauge = echarts.init(
+            document.getElementById('awattgauge'), 'white', {renderer: 'canvas'});
+        var option_awattgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}W"
+            },
+            "name": "AWATT",
+            "min": 0,
+            "max": 42000,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "AWATT",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "AWATT"
+            ],
+            "selected": {
+                "AWATT": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/awatt_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_awattgauge.setOption(option_awattgauge);
+    </script>
+<br/>                <div id="bwattgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_bwattgauge = echarts.init(
+            document.getElementById('bwattgauge'), 'white', {renderer: 'canvas'});
+        var option_bwattgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}W"
+            },
+            "name": "BWATT",
+            "min": 0,
+            "max": 42000,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "BWATT",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "BWATT"
+            ],
+            "selected": {
+                "BWATT": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/bwatt_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_bwattgauge.setOption(option_bwattgauge);
+    </script>
+<br/>                <div id="cwattgauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_cwattgauge = echarts.init(
+            document.getElementById('cwattgauge'), 'white', {renderer: 'canvas'});
+        var option_cwattgauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}W"
+            },
+            "name": "CWATT",
+            "min": 0,
+            "max": 42000,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "CWATT",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "CWATT"
+            ],
+            "selected": {
+                "CWATT": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/cwatt_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_cwattgauge.setOption(option_cwattgauge);
+    </script>
+<br/>                <div id="avargauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_avargauge = echarts.init(
+            document.getElementById('avargauge'), 'white', {renderer: 'canvas'});
+        var option_avargauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}VAR"
+            },
+            "name": "AVAR",
+            "min": 0,
+            "max": 1000,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "AVAR",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "AVAR"
+            ],
+            "selected": {
+                "AVAR": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/avar_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_avargauge.setOption(option_avargauge);
+    </script>
+<br/>                <div id="bvargauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_bvargauge = echarts.init(
+            document.getElementById('bvargauge'), 'white', {renderer: 'canvas'});
+        var option_bvargauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}VAR"
+            },
+            "name": "BVAR",
+            "min": 0,
+            "max": 1000,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "BVAR",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "BVAR"
+            ],
+            "selected": {
+                "BVAR": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/bvar_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_bvargauge.setOption(option_bvargauge);
+    </script>
+<br/>                <div id="cvargauge" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_cvargauge = echarts.init(
+            document.getElementById('cvargauge'), 'white', {renderer: 'canvas'});
+        var option_cvargauge = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    0,
+                    "-40%"
+                ],
+                "color": "#333",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 15,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}VAR"
+            },
+            "name": "CVAR",
+            "min": 0,
+            "max": 1000,
+            "splitNumber": 10,
+            "radius": "75%",
+            "startAngle": 225,
+            "endAngle": -45,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "CVAR",
+                    "value": 0
+                }
+            ],
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "CVAR"
+            ],
+            "selected": {
+                "CVAR": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "formatter": "{a} <br/>{b} : {c}%",
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u7edf\u8ba1",
+            "link": "/cvar_page/",
+            "target": "self",
+            "right": "center",
+            "top": "40%",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_cvargauge.setOption(option_cvargauge);
+    </script>
+<br/>    </div>
+    <script>
+            $('#tempgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#tempgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#tempgauge'), function() { chart_tempgauge.resize()});
+            $('#humidgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#humidgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#humidgauge'), function() { chart_humidgauge.resize()});
+            $('#avrmsgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#avrmsgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#avrmsgauge'), function() { chart_avrmsgauge.resize()});
+            $('#bvrmsgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#bvrmsgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#bvrmsgauge'), function() { chart_bvrmsgauge.resize()});
+            $('#cvrmsgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#cvrmsgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#cvrmsgauge'), function() { chart_cvrmsgauge.resize()});
+            $('#airmsgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#airmsgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#airmsgauge'), function() { chart_airmsgauge.resize()});
+            $('#birmsgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#birmsgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#birmsgauge'), function() { chart_birmsgauge.resize()});
+            $('#cirmsgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#cirmsgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#cirmsgauge'), function() { chart_cirmsgauge.resize()});
+            $('#nirmsgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#nirmsgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#nirmsgauge'), function() { chart_nirmsgauge.resize()});
+            $('#awattgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#awattgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#awattgauge'), function() { chart_awattgauge.resize()});
+            $('#bwattgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#bwattgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#bwattgauge'), function() { chart_bwattgauge.resize()});
+            $('#cwattgauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#cwattgauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#cwattgauge'), function() { chart_cwattgauge.resize()});
+            $('#avargauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#avargauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#avargauge'), function() { chart_avargauge.resize()});
+            $('#bvargauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#bvargauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#bvargauge'), function() { chart_bvargauge.resize()});
+            $('#cvargauge').resizable().draggable().css('border-style', 'dashed').css('border-width', '1px');$("#cvargauge>div:nth-child(1)").width("100%").height("100%");
+            new ResizeSensor(jQuery('#cvargauge'), function() { chart_cvargauge.resize()});
+            var charts_id = ['tempgauge','humidgauge','avrmsgauge','bvrmsgauge','cvrmsgauge','airmsgauge','birmsgauge','cirmsgauge','nirmsgauge','awattgauge','bwattgauge','cwattgauge','avargauge','bvargauge','cvargauge'];
+function downloadCfg () {
+    const fileName = 'chart_config.json'
+    let downLink = document.createElement('a')
+    downLink.download = fileName
+
+    let result = []
+    for(let i=0; i<charts_id.length; i++) {
+        chart = $('#'+charts_id[i])
+        result.push({
+            cid: charts_id[i],
+            width: chart.css("width"),
+            height: chart.css("height"),
+            top: chart.offset().top + "px",
+            left: chart.offset().left + "px"
+        })
+    }
+
+    let blob = new Blob([JSON.stringify(result)])
+    downLink.href = URL.createObjectURL(blob)
+    document.body.appendChild(downLink)
+    downLink.click()
+    document.body.removeChild(downLink)
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,1364 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 { 
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body { 
+			font-family : segoe ui;
+		}
+
+		td, th {  
+			padding: 0.5em;
+			text-align : left;
+		}
+		th { 
+			background-color : #EEEEEE;
+		
+		}
+		th.column1, td.column1 { 
+			width : 50%; 
+		}
+
+        th.column2, td.column2 {
+            width : 25%;
+        }
+
+		table { 
+			width : 100%; 
+            font-size: 0.9em;
+		}
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 5em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error { 
+			color : red;
+			font-weight : bold;
+		}	
+		tr.onmouseout_odd { 
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+			
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);		
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {	
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}	
+	</script><title>Net Status Report</title>
+</head>
+<body onload="document.getElementById('radio_mil').click()"><img ALT="Altium" src="
+			file://D:\AD21_Shared\Templates\AD_logo.png
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Net Status Report</h1>
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2022-01-25</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">16:57:33</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc" class="file"><acronym title="C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc">C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc</acronym></a></td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Units:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">
+<form><input type="radio" name="radio_units" id="radio_mm" onclick="changeUnits(this, 'mm')">mm<input type="radio" name="radio_units" id="radio_mil" onclick="changeUnits(this, 'mil')">mils</form>
+</td>
+</tr>
+</table><a name="ID5R2MTAPMIFBQM4USB1QYTVYR0PS2UGZRNB2XWLF4ZKWLM02DT5DN"><table>
+<tr>
+<th class="column1">Nets</th>
+<th class="column2">Layer</th>
+<th class="column3">Length</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.426mil|Location2.X=8836.206mil|Location1.Y=5151.197mil|Location2.Y=6654.512mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.426mil|Location2.X=8836.206mil|Location1.Y=5151.197mil|Location2.Y=6654.512mil|Absolute=True">+5V</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3253.894mil|Location2.X=9324.512mil|Location1.Y=3441.236mil|Location2.Y=5989.336mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3253.894mil|Location2.X=9324.512mil|Location1.Y=3441.236mil|Location2.Y=5989.336mil|Absolute=True">3V3_AUX</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1928.796mil|Location2.X=9324.512mil|Location1.Y=4669.425mil|Location2.Y=6072.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1928.796mil|Location2.X=9324.512mil|Location1.Y=4669.425mil|Location2.Y=6072.465mil|Absolute=True">3V3_ETH</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9255.488mil|Location2.X=9419.748mil|Location1.Y=5811.945mil|Location2.Y=5861.248mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9255.488mil|Location2.X=9419.748mil|Location1.Y=5811.945mil|Location2.Y=5861.248mil|Absolute=True">3V3_MAIN_LED_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1707.535mil|Location2.X=2035.418mil|Location1.Y=5754.82mil|Location2.Y=6560.423mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1707.535mil|Location2.X=2035.418mil|Location1.Y=5754.82mil|Location2.Y=6560.423mil|Absolute=True">4G_D+</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1733.136mil|Location2.X=2035.418mil|Location1.Y=5843.302mil|Location2.Y=6560.423mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1733.136mil|Location2.X=2035.418mil|Location1.Y=5843.302mil|Location2.Y=6560.423mil|Absolute=True">4G_D-</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.426mil|Location2.X=5375.302mil|Location1.Y=5996.826mil|Location2.Y=6325.812mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.426mil|Location2.X=5375.302mil|Location1.Y=5996.826mil|Location2.Y=6325.812mil|Absolute=True">4G_RST</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.426mil|Location2.X=3322.465mil|Location1.Y=6447.535mil|Location2.Y=6525.812mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.426mil|Location2.X=3322.465mil|Location1.Y=6447.535mil|Location2.Y=6525.812mil|Absolute=True">4G_RXD</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.426mil|Location2.X=3322.465mil|Location1.Y=6347.535mil|Location2.Y=6425.812mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.426mil|Location2.X=3322.465mil|Location1.Y=6347.535mil|Location2.Y=6425.812mil|Absolute=True">4G_TXD</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1758.736mil|Location2.X=2035.418mil|Location1.Y=5954.82mil|Location2.Y=6560.423mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1758.736mil|Location2.X=2035.418mil|Location1.Y=5954.82mil|Location2.Y=6560.423mil|Absolute=True">4G_VBUS</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5909.786mil|Location2.X=6153.688mil|Location1.Y=2675.868mil|Location2.Y=2858.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5909.786mil|Location2.X=6153.688mil|Location1.Y=2675.868mil|Location2.Y=2858.688mil|Absolute=True">AGND</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5275.685mil|Location2.X=5729.632mil|Location1.Y=3780.488mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5275.685mil|Location2.X=5729.632mil|Location1.Y=3780.488mil|Location2.Y=5233.172mil|Absolute=True">BEEP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4373.894mil|Location2.X=5033.176mil|Location1.Y=3566.748mil|Location2.Y=5398.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4373.894mil|Location2.X=5033.176mil|Location1.Y=3566.748mil|Location2.Y=5398.134mil|Absolute=True">BOOT0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4368.894mil|Location2.X=5883.57mil|Location1.Y=4081.748mil|Location2.Y=5496.558mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4368.894mil|Location2.X=5883.57mil|Location1.Y=4081.748mil|Location2.Y=5496.558mil|Absolute=True">BOOT1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5090.528mil|Location2.X=5242.859mil|Location1.Y=3441.236mil|Location2.Y=3666.067mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5090.528mil|Location2.X=5242.859mil|Location1.Y=3441.236mil|Location2.Y=3666.067mil|Absolute=True">BUZZER_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3428.855mil|Location2.X=3632.433mil|Location1.Y=5570.488mil|Location2.Y=5825.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3428.855mil|Location2.X=3632.433mil|Location1.Y=5570.488mil|Location2.Y=5825.811mil|Absolute=True">C30_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3356.945mil|Location2.X=3632.433mil|Location1.Y=5766.751mil|Location2.Y=5949.512mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3356.945mil|Location2.X=3632.433mil|Location1.Y=5766.751mil|Location2.Y=5949.512mil|Absolute=True">C31_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2945.685mil|Location2.X=3109.356mil|Location1.Y=4537.92mil|Location2.Y=4841.993mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2945.685mil|Location2.X=3109.356mil|Location1.Y=4537.92mil|Location2.Y=4841.993mil|Absolute=True">C35_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3106.747mil|Location2.X=3244.315mil|Location1.Y=4540.488mil|Location2.Y=4841.993mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3106.747mil|Location2.X=3244.315mil|Location1.Y=4540.488mil|Location2.Y=4841.993mil|Absolute=True">C36_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3129.702mil|Location2.X=3326.206mil|Location1.Y=4649.425mil|Location2.Y=4841.993mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3129.702mil|Location2.X=3326.206mil|Location1.Y=4649.425mil|Location2.Y=4841.993mil|Absolute=True">C41_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5923.43mil|Location2.X=6180.401mil|Location1.Y=2401.689mil|Location2.Y=2578.332mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5923.43mil|Location2.X=6180.401mil|Location1.Y=2401.689mil|Location2.Y=2578.332mil|Absolute=True">C51_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5519.599mil|Location2.X=5770.214mil|Location1.Y=2342.251mil|Location2.Y=2564.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5519.599mil|Location2.X=5770.214mil|Location1.Y=2342.251mil|Location2.Y=2564.132mil|Absolute=True">C53_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5923.71mil|Location2.X=6270.401mil|Location1.Y=2657.251mil|Location2.Y=2800.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5923.71mil|Location2.X=6270.401mil|Location1.Y=2657.251mil|Location2.Y=2800.401mil|Absolute=True">C55_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4847.535mil|Location2.X=5812.248mil|Location1.Y=2717.346mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4847.535mil|Location2.X=5812.248mil|Location1.Y=2717.346mil|Location2.Y=6083.566mil|Absolute=True">CF1_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4847.535mil|Location2.X=5798.332mil|Location1.Y=2657.535mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4847.535mil|Location2.X=5798.332mil|Location1.Y=2657.535mil|Location2.Y=6083.566mil|Absolute=True">CF2_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4847.535mil|Location2.X=5784.41mil|Location1.Y=2557.535mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4847.535mil|Location2.X=5784.41mil|Location1.Y=2557.535mil|Location2.Y=6083.566mil|Absolute=True">CF3_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5881.948mil|Location2.X=6034.887mil|Location1.Y=2703.708mil|Location2.Y=2867.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5881.948mil|Location2.X=6034.887mil|Location1.Y=2703.708mil|Location2.Y=2867.559mil|Absolute=True">CLKIN_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.567mil|Location2.X=3712.465mil|Location1.Y=5937.992mil|Location2.Y=6555.423mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.567mil|Location2.X=3712.465mil|Location1.Y=5937.992mil|Location2.Y=6555.423mil|Absolute=True">D+</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.567mil|Location2.X=3738.064mil|Location1.Y=5894.189mil|Location2.Y=6555.423mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.567mil|Location2.X=3738.064mil|Location1.Y=5894.189mil|Location2.Y=6555.423mil|Absolute=True">D-</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3129.702mil|Location2.X=5591.838mil|Location1.Y=4958.007mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3129.702mil|Location2.X=5591.838mil|Location1.Y=4958.007mil|Location2.Y=5233.172mil|Absolute=True">ETH_MDC</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3346.748mil|Location2.X=5769.002mil|Location1.Y=4993.894mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3346.748mil|Location2.X=5769.002mil|Location1.Y=4993.894mil|Location2.Y=5233.172mil|Absolute=True">ETH_MDIO</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3090.332mil|Location2.X=5454.042mil|Location1.Y=4958.007mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3090.332mil|Location2.X=5454.042mil|Location1.Y=4958.007mil|Location2.Y=5233.172mil|Absolute=True">ETH_RESET</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6386.401mil|Location1.Y=4487.733mil|Location2.Y=5339.078mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6386.401mil|Location1.Y=4487.733mil|Location2.Y=5339.078mil|Absolute=True">FLASH_CS</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6436.401mil|Location1.Y=4487.733mil|Location2.Y=5378.448mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6436.401mil|Location1.Y=4487.733mil|Location2.Y=5378.448mil|Absolute=True">FLASH_MISO</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6536.401mil|Location1.Y=4765.685mil|Location2.Y=5457.188mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6536.401mil|Location1.Y=4765.685mil|Location2.Y=5457.188mil|Absolute=True">FLASH_MOSI</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6486.401mil|Location1.Y=4765.685mil|Location2.Y=5358.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6486.401mil|Location1.Y=4765.685mil|Location2.Y=5358.764mil|Absolute=True">FLASH_SCK</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5238.168mil|Location2.X=6877.194mil|Location1.Y=5146.432mil|Location2.Y=5433.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5238.168mil|Location2.X=6877.194mil|Location1.Y=5146.432mil|Location2.Y=5433.097mil|Absolute=True">FSMC_A0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5257.852mil|Location2.X=6877.194mil|Location1.Y=5146.432mil|Location2.Y=5401.601mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5257.852mil|Location2.X=6877.194mil|Location1.Y=5146.432mil|Location2.Y=5401.601mil|Absolute=True">FSMC_A1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5635.016mil|Location2.Y=5937.035mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5635.016mil|Location2.Y=5937.035mil|Absolute=True">FSMC_A10</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5654.7mil|Location2.Y=5968.531mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5654.7mil|Location2.Y=5968.531mil|Absolute=True">FSMC_A11</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5474.388mil|Location2.X=6431.88mil|Location1.Y=5785.411mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5474.388mil|Location2.X=6431.88mil|Location1.Y=5785.411mil|Location2.Y=6083.566mil|Absolute=True">FSMC_A12</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5454.704mil|Location2.X=6431.88mil|Location1.Y=5816.907mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5454.704mil|Location2.X=6431.88mil|Location1.Y=5816.907mil|Location2.Y=6083.566mil|Absolute=True">FSMC_A13</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5435.018mil|Location2.X=6431.88mil|Location1.Y=5848.403mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5435.018mil|Location2.X=6431.88mil|Location1.Y=5848.403mil|Location2.Y=6083.566mil|Absolute=True">FSMC_A14</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5415.334mil|Location2.X=6431.88mil|Location1.Y=5879.901mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5415.334mil|Location2.X=6431.88mil|Location1.Y=5879.901mil|Location2.Y=6083.566mil|Absolute=True">FSMC_A15</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5612.184mil|Location2.X=6431.88mil|Location1.Y=5344.467mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5612.184mil|Location2.X=6431.88mil|Location1.Y=5344.467mil|Location2.Y=6083.566mil|Absolute=True">FSMC_A16</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5592.498mil|Location2.X=6431.88mil|Location1.Y=5312.971mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5592.498mil|Location2.X=6431.88mil|Location1.Y=5312.971mil|Location2.Y=6083.566mil|Absolute=True">FSMC_A17</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5572.814mil|Location2.X=6431.88mil|Location1.Y=5281.475mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5572.814mil|Location2.X=6431.88mil|Location1.Y=5281.475mil|Location2.Y=6083.566mil|Absolute=True">FSMC_A18</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5277.538mil|Location2.X=6877.194mil|Location1.Y=5146.432mil|Location2.Y=5370.105mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5277.538mil|Location2.X=6877.194mil|Location1.Y=5146.432mil|Location2.Y=5370.105mil|Absolute=True">FSMC_A2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5297.222mil|Location2.X=6877.194mil|Location1.Y=5146.432mil|Location2.Y=5338.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5297.222mil|Location2.X=6877.194mil|Location1.Y=5146.432mil|Location2.Y=5338.609mil|Absolute=True">FSMC_A3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5316.908mil|Location2.X=6877.194mil|Location1.Y=5146.432mil|Location2.Y=5307.113mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5316.908mil|Location2.X=6877.194mil|Location1.Y=5146.432mil|Location2.Y=5307.113mil|Absolute=True">FSMC_A4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5336.592mil|Location2.X=6431.88mil|Location1.Y=5146.432mil|Location2.Y=5937.035mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5336.592mil|Location2.X=6431.88mil|Location1.Y=5146.432mil|Location2.Y=5937.035mil|Absolute=True">FSMC_A5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5516.904mil|Location2.Y=5968.531mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5516.904mil|Location2.Y=5968.531mil|Absolute=True">FSMC_A6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5575.96mil|Location2.Y=5842.545mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5575.96mil|Location2.Y=5842.545mil|Absolute=True">FSMC_A7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5595.644mil|Location2.Y=5874.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5595.644mil|Location2.Y=5874.041mil|Absolute=True">FSMC_A8</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5615.33mil|Location2.Y=5905.539mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5615.33mil|Location2.Y=5905.539mil|Absolute=True">FSMC_A9</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5513.758mil|Location2.X=6877.194mil|Location1.Y=5470.451mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5513.758mil|Location2.X=6877.194mil|Location1.Y=5470.451mil|Location2.Y=6083.566mil|Absolute=True">FSMC_D0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5494.074mil|Location2.X=6877.194mil|Location1.Y=5501.947mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5494.074mil|Location2.X=6877.194mil|Location1.Y=5501.947mil|Location2.Y=6083.566mil|Absolute=True">FSMC_D1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5690.923mil|Location2.Y=5850.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5690.923mil|Location2.Y=5850.89mil|Absolute=True">FSMC_D10</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5659.427mil|Location2.Y=5870.574mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5659.427mil|Location2.Y=5870.574mil|Absolute=True">FSMC_D11</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5564.939mil|Location2.Y=5890.26mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5564.939mil|Location2.Y=5890.26mil|Absolute=True">FSMC_D12</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5671.238mil|Location2.X=6431.88mil|Location1.Y=5533.443mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5671.238mil|Location2.X=6431.88mil|Location1.Y=5533.443mil|Location2.Y=6083.566mil|Absolute=True">FSMC_D13</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5651.554mil|Location2.X=6431.88mil|Location1.Y=5501.947mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5651.554mil|Location2.X=6431.88mil|Location1.Y=5501.947mil|Location2.Y=6083.566mil|Absolute=True">FSMC_D14</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5631.868mil|Location2.X=6431.88mil|Location1.Y=5470.451mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5631.868mil|Location2.X=6431.88mil|Location1.Y=5470.451mil|Location2.Y=6083.566mil|Absolute=True">FSMC_D15</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6877.194mil|Location1.Y=5533.443mil|Location2.Y=5870.574mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6877.194mil|Location1.Y=5533.443mil|Location2.Y=5870.574mil|Absolute=True">FSMC_D2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6877.194mil|Location1.Y=5564.939mil|Location2.Y=5850.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6877.194mil|Location1.Y=5564.939mil|Location2.Y=5850.89mil|Absolute=True">FSMC_D3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5659.427mil|Location2.Y=5693.41mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5659.427mil|Location2.Y=5693.41mil|Absolute=True">FSMC_D4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5690.923mil|Location2.Y=5716.561mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5690.923mil|Location2.Y=5716.561mil|Absolute=True">FSMC_D5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5713.756mil|Location2.Y=5748.057mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5713.756mil|Location2.Y=5748.057mil|Absolute=True">FSMC_D6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5753.915mil|Location2.Y=5791.834mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6877.194mil|Location1.Y=5753.915mil|Location2.Y=5791.834mil|Absolute=True">FSMC_D7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5753.915mil|Location2.Y=5811.52mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5753.915mil|Location2.Y=5811.52mil|Absolute=True">FSMC_D8</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5722.419mil|Location2.Y=5831.204mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6431.88mil|Location1.Y=5722.419mil|Location2.Y=5831.204mil|Absolute=True">FSMC_D9</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6431.88mil|Location1.Y=5320.054mil|Location2.Y=5464.593mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6431.88mil|Location1.Y=5320.054mil|Location2.Y=5464.593mil|Absolute=True">FSMC_NBL0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6431.88mil|Location1.Y=5300.37mil|Location2.Y=5433.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6431.88mil|Location1.Y=5300.37mil|Location2.Y=5433.097mil|Absolute=True">FSMC_NBL1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=7151.102mil|Location1.Y=5425.662mil|Location2.Y=5654.04mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=7151.102mil|Location1.Y=5425.662mil|Location2.Y=5654.04mil|Absolute=True">FSMC_NE3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6431.88mil|Location1.Y=5375.963mil|Location2.Y=5791.834mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6431.88mil|Location1.Y=5375.963mil|Location2.Y=5791.834mil|Absolute=True">FSMC_NOE</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6877.194mil|Location1.Y=5753.126mil|Location2.Y=5811.049mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4946.436mil|Location2.X=6877.194mil|Location1.Y=5753.126mil|Location2.Y=5811.049mil|Absolute=True">FSMC_NWE</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1554.585mil|Location2.X=10675.575mil|Location1.Y=1665.567mil|Location2.Y=6696.676mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1554.585mil|Location2.X=10675.575mil|Location1.Y=1665.567mil|Location2.Y=6696.676mil|Absolute=True">GND</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1634.425mil|Location2.X=5811.972mil|Location1.Y=2480.998mil|Location2.Y=2826.206mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1634.425mil|Location2.X=5811.972mil|Location1.Y=2480.998mil|Location2.Y=2826.206mil|Absolute=True">IAN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1634.425mil|Location2.X=5798.056mil|Location1.Y=2494.914mil|Location2.Y=3167.308mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1634.425mil|Location2.X=5798.056mil|Location1.Y=2494.914mil|Location2.Y=3167.308mil|Absolute=True">IAP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1614.425mil|Location2.X=5895.766mil|Location1.Y=1822.694mil|Location2.Y=2508.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1614.425mil|Location2.X=5895.766mil|Location1.Y=1822.694mil|Location2.Y=2508.732mil|Absolute=True">IBN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1614.425mil|Location2.X=5825.896mil|Location1.Y=2163.796mil|Location2.Y=2508.454mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1614.425mil|Location2.X=5825.896mil|Location1.Y=2163.796mil|Location2.Y=2508.454mil|Absolute=True">IBP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5881.668mil|Location2.X=10660.575mil|Location1.Y=2153.796mil|Location2.Y=2536.572mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5881.668mil|Location2.X=10660.575mil|Location1.Y=2153.796mil|Location2.Y=2536.572mil|Absolute=True">ICN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5867.752mil|Location2.X=10660.575mil|Location1.Y=1802.694mil|Location2.Y=2522.656mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5867.752mil|Location2.X=10660.575mil|Location1.Y=1802.694mil|Location2.Y=2522.656mil|Absolute=True">ICP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5909.506mil|Location2.X=10675.575mil|Location1.Y=2522.474mil|Location2.Y=3172.308mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5909.506mil|Location2.X=10675.575mil|Location1.Y=2522.474mil|Location2.Y=3172.308mil|Absolute=True">INN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5895.59mil|Location2.X=10675.575mil|Location1.Y=2508.558mil|Location2.Y=2811.206mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5895.59mil|Location2.X=10675.575mil|Location1.Y=2508.558mil|Location2.Y=2811.206mil|Absolute=True">INP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=5895.488mil|Location1.Y=2731.546mil|Location2.Y=5457.188mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=5895.488mil|Location1.Y=2731.546mil|Location2.Y=5457.188mil|Absolute=True">IRQ0_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5784.236mil|Location2.X=5883.57mil|Location1.Y=2731.268mil|Location2.Y=5476.874mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5784.236mil|Location2.X=5883.57mil|Location1.Y=2731.268mil|Location2.Y=5476.874mil|Absolute=True">IRQ1_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5179.112mil|Location2.X=6937.387mil|Location1.Y=3966.985mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5179.112mil|Location2.X=6937.387mil|Location1.Y=3966.985mil|Location2.Y=5233.172mil|Absolute=True">KEY_BACK</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5080.688mil|Location2.X=6357.387mil|Location1.Y=3446.985mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5080.688mil|Location2.X=6357.387mil|Location1.Y=3446.985mil|Location2.Y=5233.172mil|Absolute=True">KEY_DOWN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5139.742mil|Location2.X=5832.387mil|Location1.Y=3961.985mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5139.742mil|Location2.X=5832.387mil|Location1.Y=3961.985mil|Location2.Y=5233.172mil|Absolute=True">KEY_IN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5100.372mil|Location2.X=6932.387mil|Location1.Y=3451.985mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5100.372mil|Location2.X=6932.387mil|Location1.Y=3451.985mil|Location2.Y=5233.172mil|Absolute=True">KEY_LEFT</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5120.058mil|Location2.X=5832.387mil|Location1.Y=3441.985mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5120.058mil|Location2.X=5832.387mil|Location1.Y=3441.985mil|Location2.Y=5233.172mil|Absolute=True">KEY_RIGHT</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5061.002mil|Location2.X=6357.387mil|Location1.Y=3961.985mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5061.002mil|Location2.X=6357.387mil|Location1.Y=3961.985mil|Location2.Y=5233.172mil|Absolute=True">KEY_UP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9436.748mil|Location2.X=9615.07mil|Location1.Y=4543.894mil|Location2.Y=5076.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9436.748mil|Location2.X=9615.07mil|Location1.Y=4543.894mil|Location2.Y=5076.17mil|Absolute=True">L1_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1967.339mil|Location2.X=2368.213mil|Location1.Y=2630.567mil|Location2.Y=2826.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1967.339mil|Location2.X=2368.213mil|Location1.Y=2630.567mil|Location2.Y=2826.106mil|Absolute=True">L4_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1962.339mil|Location2.X=2368.213mil|Location1.Y=3103.894mil|Location2.Y=3329.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1962.339mil|Location2.X=2368.213mil|Location1.Y=3103.894mil|Location2.Y=3329.433mil|Absolute=True">L4_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5139.742mil|Location2.X=6115.381mil|Location1.Y=5996.826mil|Location2.Y=6683.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5139.742mil|Location2.X=6115.381mil|Location1.Y=5996.826mil|Location2.Y=6683.606mil|Absolute=True">LED1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5159.428mil|Location2.X=6385.381mil|Location1.Y=5996.826mil|Location2.Y=6683.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5159.428mil|Location2.X=6385.381mil|Location1.Y=5996.826mil|Location2.Y=6683.606mil|Absolute=True">LED2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5218.482mil|Location2.X=6635.381mil|Location1.Y=5996.826mil|Location2.Y=6683.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5218.482mil|Location2.X=6635.381mil|Location1.Y=5996.826mil|Location2.Y=6683.606mil|Absolute=True">LED3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1648.893mil|Location2.X=3089.67mil|Location1.Y=4807.811mil|Location2.Y=5186.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1648.893mil|Location2.X=3089.67mil|Location1.Y=4807.811mil|Location2.Y=5186.496mil|Absolute=True">LINK_LED</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5472.512mil|Location2.X=5611.522mil|Location1.Y=2866.312mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5472.512mil|Location2.X=5611.522mil|Location1.Y=2866.312mil|Location2.Y=5233.172mil|Absolute=True">MISO_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5412.512mil|Location2.X=5631.208mil|Location1.Y=2806.312mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5412.512mil|Location2.X=5631.208mil|Location1.Y=2806.312mil|Location2.Y=5233.172mil|Absolute=True">MOSI_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9244.93mil|Location2.X=10598.212mil|Location1.Y=4984.43mil|Location2.Y=5912.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9244.93mil|Location2.X=10598.212mil|Location1.Y=4984.43mil|Location2.Y=5912.94mil|Absolute=True">N_IN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5330.488mil|Location2.X=5513.098mil|Location1.Y=4761.945mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5330.488mil|Location2.X=5513.098mil|Location1.Y=4761.945mil|Location2.Y=5233.172mil|Absolute=True">OSC_IN_16M</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5157.103mil|Location2.X=5220.575mil|Location1.Y=4643.796mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5157.103mil|Location2.X=5220.575mil|Location1.Y=4643.796mil|Location2.Y=5233.172mil|Absolute=True">OSC_IN_32768</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5513.758mil|Location2.X=5679.512mil|Location1.Y=4831.836mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5513.758mil|Location2.X=5679.512mil|Location1.Y=4831.836mil|Location2.Y=5233.172mil|Absolute=True">OSC_OUT_16M</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5218.482mil|Location2.X=5305.575mil|Location1.Y=4643.796mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5218.482mil|Location2.X=5305.575mil|Location1.Y=4643.796mil|Location2.Y=5233.172mil|Absolute=True">OSC_OUT_32768</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5111.748mil|Location2.X=5244.315mil|Location1.Y=3703.933mil|Location2.Y=3849.512mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5111.748mil|Location2.X=5244.315mil|Location1.Y=3703.933mil|Location2.Y=3849.512mil|Absolute=True">Q1_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3148.008mil|Location2.X=3323.252mil|Location1.Y=4939.702mil|Location2.Y=5056.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3148.008mil|Location2.X=3323.252mil|Location1.Y=4939.702mil|Location2.Y=5056.106mil|Absolute=True">R15_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2931.748mil|Location2.X=3031.992mil|Location1.Y=4753.894mil|Location2.Y=4860.3mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2931.748mil|Location2.X=3031.992mil|Location1.Y=4753.894mil|Location2.Y=4860.3mil|Absolute=True">R16_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2131.748mil|Location2.X=2325.366mil|Location1.Y=4373.894mil|Location2.Y=4750.396mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2131.748mil|Location2.X=2325.366mil|Location1.Y=4373.894mil|Location2.Y=4750.396mil|Absolute=True">R21_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1558.893mil|Location2.X=1815.626mil|Location1.Y=5015.504mil|Location2.Y=5093.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1558.893mil|Location2.X=1815.626mil|Location1.Y=5015.504mil|Location2.Y=5093.252mil|Absolute=True">R22_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1558.893mil|Location2.X=1815.626mil|Location1.Y=4593.504mil|Location2.Y=4673.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1558.893mil|Location2.X=1815.626mil|Location1.Y=4593.504mil|Location2.Y=4673.252mil|Absolute=True">R23_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8405.488mil|Location2.X=8559.748mil|Location1.Y=6476.945mil|Location2.Y=6526.248mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8405.488mil|Location2.X=8559.748mil|Location1.Y=6476.945mil|Location2.Y=6526.248mil|Absolute=True">R33_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6670.685mil|Location2.X=6721.995mil|Location1.Y=6450.488mil|Location2.Y=6683.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6670.685mil|Location2.X=6721.995mil|Location1.Y=6450.488mil|Location2.Y=6683.606mil|Absolute=True">R36_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6420.685mil|Location2.X=6471.995mil|Location1.Y=6450.488mil|Location2.Y=6683.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6420.685mil|Location2.X=6471.995mil|Location1.Y=6450.488mil|Location2.Y=6683.606mil|Absolute=True">R37_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6145.685mil|Location2.X=6201.995mil|Location1.Y=6450.488mil|Location2.Y=6683.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6145.685mil|Location2.X=6201.995mil|Location1.Y=6450.488mil|Location2.Y=6683.606mil|Absolute=True">R38_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9255.488mil|Location2.X=9419.748mil|Location1.Y=6221.945mil|Location2.Y=6271.248mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9255.488mil|Location2.X=9419.748mil|Location1.Y=6221.945mil|Location2.Y=6271.248mil|Absolute=True">R3_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9348.894mil|Location2.X=9496.106mil|Location1.Y=4543.894mil|Location2.Y=4813.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9348.894mil|Location2.X=9496.106mil|Location1.Y=4543.894mil|Location2.Y=4813.252mil|Absolute=True">R43_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9903.894mil|Location2.X=10051.106mil|Location1.Y=4543.894mil|Location2.Y=4808.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9903.894mil|Location2.X=10051.106mil|Location1.Y=4543.894mil|Location2.Y=4808.252mil|Absolute=True">R49_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9991.748mil|Location2.X=10160.07mil|Location1.Y=4543.894mil|Location2.Y=5071.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9991.748mil|Location2.X=10160.07mil|Location1.Y=4543.894mil|Location2.Y=5071.17mil|Absolute=True">R49_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10433.894mil|Location2.X=10581.106mil|Location1.Y=4543.894mil|Location2.Y=4808.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10433.894mil|Location2.X=10581.106mil|Location1.Y=4543.894mil|Location2.Y=4808.252mil|Absolute=True">R54_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10511.748mil|Location2.X=10685.07mil|Location1.Y=4543.894mil|Location2.Y=5076.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10511.748mil|Location2.X=10685.07mil|Location1.Y=4543.894mil|Location2.Y=5076.17mil|Absolute=True">R54_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1801.748mil|Location2.X=1953.252mil|Location1.Y=3103.894mil|Location2.Y=3166.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1801.748mil|Location2.X=1953.252mil|Location1.Y=3103.894mil|Location2.Y=3166.106mil|Absolute=True">R58_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9255.488mil|Location2.X=9414.748mil|Location1.Y=5426.945mil|Location2.Y=5476.248mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9255.488mil|Location2.X=9414.748mil|Location1.Y=5426.945mil|Location2.Y=5476.248mil|Absolute=True">R5_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1801.748mil|Location2.X=1953.252mil|Location1.Y=2763.894mil|Location2.Y=2826.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1801.748mil|Location2.X=1953.252mil|Location1.Y=2763.894mil|Location2.Y=2826.106mil|Absolute=True">R60_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1972.339mil|Location2.X=2373.213mil|Location1.Y=1680.567mil|Location2.Y=1886.107mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1972.339mil|Location2.X=2373.213mil|Location1.Y=1680.567mil|Location2.Y=1886.107mil|Absolute=True">R62_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1791.748mil|Location2.X=1958.252mil|Location1.Y=1823.893mil|Location2.Y=1886.107mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1791.748mil|Location2.X=1958.252mil|Location1.Y=1823.893mil|Location2.Y=1886.107mil|Absolute=True">R62_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1791.748mil|Location2.X=1958.252mil|Location1.Y=2163.894mil|Location2.Y=2226.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1791.748mil|Location2.X=1958.252mil|Location1.Y=2163.894mil|Location2.Y=2226.106mil|Absolute=True">R64_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1972.339mil|Location2.X=2373.213mil|Location1.Y=2163.894mil|Location2.Y=2379.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1972.339mil|Location2.X=2373.213mil|Location1.Y=2163.894mil|Location2.Y=2379.433mil|Absolute=True">R65_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9936.788mil|Location2.X=10337.661mil|Location1.Y=2153.894mil|Location2.Y=2359.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9936.788mil|Location2.X=10337.661mil|Location1.Y=2153.894mil|Location2.Y=2359.433mil|Absolute=True">R66_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10346.748mil|Location2.X=10493.252mil|Location1.Y=2153.894mil|Location2.Y=2216.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10346.748mil|Location2.X=10493.252mil|Location1.Y=2153.894mil|Location2.Y=2216.106mil|Absolute=True">R66_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10341.748mil|Location2.X=10493.252mil|Location1.Y=1803.893mil|Location2.Y=1866.107mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10341.748mil|Location2.X=10493.252mil|Location1.Y=1803.893mil|Location2.Y=1866.107mil|Absolute=True">R68_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9936.788mil|Location2.X=10332.661mil|Location1.Y=1665.567mil|Location2.Y=1866.107mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9936.788mil|Location2.X=10332.661mil|Location1.Y=1665.567mil|Location2.Y=1866.107mil|Absolute=True">R69_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9951.788mil|Location2.X=10347.661mil|Location1.Y=3108.894mil|Location2.Y=3309.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9951.788mil|Location2.X=10347.661mil|Location1.Y=3108.894mil|Location2.Y=3309.433mil|Absolute=True">R70_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10356.748mil|Location2.X=10508.252mil|Location1.Y=3108.894mil|Location2.Y=3171.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10356.748mil|Location2.X=10508.252mil|Location1.Y=3108.894mil|Location2.Y=3171.106mil|Absolute=True">R70_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10351.748mil|Location2.X=10508.252mil|Location1.Y=2748.894mil|Location2.Y=2811.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10351.748mil|Location2.X=10508.252mil|Location1.Y=2748.894mil|Location2.Y=2811.106mil|Absolute=True">R72_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9951.788mil|Location2.X=10342.661mil|Location1.Y=2610.567mil|Location2.Y=2811.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9951.788mil|Location2.X=10342.661mil|Location1.Y=2610.567mil|Location2.Y=2811.106mil|Absolute=True">R73_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4653.796mil|Location2.X=5883.57mil|Location1.Y=2373.894mil|Location2.Y=5516.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4653.796mil|Location2.X=5883.57mil|Location1.Y=2373.894mil|Location2.Y=5516.244mil|Absolute=True">RESET_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3148.008mil|Location2.X=5883.57mil|Location1.Y=4920.016mil|Location2.Y=5398.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3148.008mil|Location2.X=5883.57mil|Location1.Y=4920.016mil|Location2.Y=5398.134mil|Absolute=True">RMII_CRS_DV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3110.016mil|Location2.X=5749.318mil|Location1.Y=4958.007mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3110.016mil|Location2.X=5749.318mil|Location1.Y=4958.007mil|Location2.Y=5233.172mil|Absolute=True">RMII_REF_CLK</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3148.008mil|Location2.X=5883.57mil|Location1.Y=4860.96mil|Location2.Y=5417.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3148.008mil|Location2.X=5883.57mil|Location1.Y=4860.96mil|Location2.Y=5417.818mil|Absolute=True">RMII_RXD0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3148.008mil|Location2.X=5883.57mil|Location1.Y=4841.276mil|Location2.Y=5437.504mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3148.008mil|Location2.X=5883.57mil|Location1.Y=4841.276mil|Location2.Y=5437.504mil|Absolute=True">RMII_RXD1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050.96mil|Location2.X=5033.176mil|Location1.Y=4958.007mil|Location2.Y=5594.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050.96mil|Location2.X=5033.176mil|Location1.Y=4958.007mil|Location2.Y=5594.984mil|Absolute=True">RMII_TXD0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3031.276mil|Location2.X=5033.176mil|Location1.Y=4958.007mil|Location2.Y=5575.298mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3031.276mil|Location2.X=5033.176mil|Location1.Y=4958.007mil|Location2.Y=5575.298mil|Absolute=True">RMII_TXD1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3070.646mil|Location2.X=5033.176mil|Location1.Y=4958.007mil|Location2.Y=5634.354mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3070.646mil|Location2.X=5033.176mil|Location1.Y=4958.007mil|Location2.Y=5634.354mil|Absolute=True">RMII_TX_EN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4942.615mil|Location2.X=5552.468mil|Location1.Y=4093.796mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4942.615mil|Location2.X=5552.468mil|Location1.Y=4093.796mil|Location2.Y=5233.172mil|Absolute=True">RST</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5532.512mil|Location2.X=5749.318mil|Location1.Y=2926.312mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5532.512mil|Location2.X=5749.318mil|Location1.Y=2926.312mil|Location2.Y=6083.566mil|Absolute=True">SCLK_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4608.894mil|Location2.X=5033.176mil|Location1.Y=5812.18mil|Location2.Y=6179.864mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4608.894mil|Location2.X=5033.176mil|Location1.Y=5812.18mil|Location2.Y=6179.864mil|Absolute=True">SDIO_CMD</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4801.41mil|Location2.X=5276.876mil|Location1.Y=5996.826mil|Location2.Y=6313.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4801.41mil|Location2.X=5276.876mil|Location1.Y=5996.826mil|Location2.Y=6313.252mil|Absolute=True">SDIO_D0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4844.64mil|Location2.X=5326.106mil|Location1.Y=5996.826mil|Location2.Y=6313.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4844.64mil|Location2.X=5326.106mil|Location1.Y=5996.826mil|Location2.Y=6313.252mil|Absolute=True">SDIO_D1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443.894mil|Location2.X=5033.176mil|Location1.Y=5910.606mil|Location2.Y=6179.864mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443.894mil|Location2.X=5033.176mil|Location1.Y=5910.606mil|Location2.Y=6179.864mil|Absolute=True">SDIO_D2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4523.894mil|Location2.X=5033.176mil|Location1.Y=5890.92mil|Location2.Y=6179.935mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4523.894mil|Location2.X=5033.176mil|Location1.Y=5890.92mil|Location2.Y=6179.935mil|Absolute=True">SDIO_D3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4715mil|Location2.X=5033.176mil|Location1.Y=5871.236mil|Location2.Y=6179.864mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4715mil|Location2.X=5033.176mil|Location1.Y=5871.236mil|Location2.Y=6179.864mil|Absolute=True">SDIO_SCK</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4421.748mil|Location2.X=5033.176mil|Location1.Y=5385.606mil|Location2.Y=5576.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4421.748mil|Location2.X=5033.176mil|Location1.Y=5385.606mil|Location2.Y=5576.106mil|Absolute=True">SHT31_SCL</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4421.748mil|Location2.X=5033.176mil|Location1.Y=5228.894mil|Location2.Y=5417.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4421.748mil|Location2.X=5033.176mil|Location1.Y=5228.894mil|Location2.Y=5417.818mil|Absolute=True">SHT31_SDA</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1648.893mil|Location2.X=3069.984mil|Location1.Y=4693.504mil|Location2.Y=4841.993mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1648.893mil|Location2.X=3069.984mil|Location1.Y=4693.504mil|Location2.Y=4841.993mil|Absolute=True">SPEED_LED</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4847.535mil|Location2.X=5769.002mil|Location1.Y=2746.312mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4847.535mil|Location2.X=5769.002mil|Location1.Y=2746.312mil|Location2.Y=6083.566mil|Absolute=True">SS_7878</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3960mil|Location2.X=5033.176mil|Location1.Y=5949.976mil|Location2.Y=6420mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3960mil|Location2.X=5033.176mil|Location1.Y=5949.976mil|Location2.Y=6420mil|Absolute=True">SWD_CLK</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3960mil|Location2.X=5139.082mil|Location1.Y=5996.826mil|Location2.Y=6520mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3960mil|Location2.X=5139.082mil|Location1.Y=5996.826mil|Location2.Y=6520mil|Absolute=True">SWD_DIO</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4693.894mil|Location2.X=5572.152mil|Location1.Y=5146.432mil|Location2.Y=6179.864mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4693.894mil|Location2.X=5572.152mil|Location1.Y=5146.432mil|Location2.Y=6179.864mil|Absolute=True">TF_IN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2254.374mil|Location2.X=3031.992mil|Location1.Y=4503.796mil|Location2.Y=5278.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2254.374mil|Location2.X=3031.992mil|Location1.Y=4503.796mil|Location2.Y=5278.252mil|Absolute=True">TPRX+</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2254.374mil|Location2.X=3031.992mil|Location1.Y=4503.796mil|Location2.Y=5278.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2254.374mil|Location2.X=3031.992mil|Location1.Y=4503.796mil|Location2.Y=5278.252mil|Absolute=True">TPRX-</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.474mil|Location2.X=3031.992mil|Location1.Y=4503.796mil|Location2.Y=5278.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.474mil|Location2.X=3031.992mil|Location1.Y=4503.796mil|Location2.Y=5278.252mil|Absolute=True">TPTX+</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.474mil|Location2.X=3031.992mil|Location1.Y=4503.796mil|Location2.Y=5278.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.474mil|Location2.X=3031.992mil|Location1.Y=4503.796mil|Location2.Y=5278.252mil|Absolute=True">TPTX-</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.426mil|Location2.X=3316.106mil|Location1.Y=5854.82mil|Location2.Y=5925.812mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3114.426mil|Location2.X=3316.106mil|Location1.Y=5854.82mil|Location2.Y=5925.812mil|Absolute=True">U10_18</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5586.312mil|Location2.X=5770.494mil|Location1.Y=2675.59mil|Location2.Y=2953.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5586.312mil|Location2.X=5770.494mil|Location1.Y=2675.59mil|Location2.Y=2953.688mil|Absolute=True">U11_36</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5526.312mil|Location2.X=5756.572mil|Location1.Y=2661.668mil|Location2.Y=2893.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5526.312mil|Location2.X=5756.572mil|Location1.Y=2661.668mil|Location2.Y=2893.688mil|Absolute=True">U11_37</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5466.312mil|Location2.X=5742.656mil|Location1.Y=2647.752mil|Location2.Y=2833.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5466.312mil|Location2.X=5742.656mil|Location1.Y=2647.752mil|Location2.Y=2833.688mil|Absolute=True">U11_38</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5406.312mil|Location2.X=5728.732mil|Location1.Y=2633.83mil|Location2.Y=2773.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5406.312mil|Location2.X=5728.732mil|Location1.Y=2633.83mil|Location2.Y=2773.688mil|Absolute=True">U11_39</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5100.372mil|Location2.X=5165.575mil|Location1.Y=5996.826mil|Location2.Y=6321.206mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5100.372mil|Location2.X=5165.575mil|Location1.Y=5996.826mil|Location2.Y=6321.206mil|Absolute=True">U1_106</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6116.206mil|Location1.Y=5930.29mil|Location2.Y=6205.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=6116.206mil|Location1.Y=5930.29mil|Location2.Y=6205.575mil|Absolute=True">U1_71</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3488.933mil|Location2.X=3632.433mil|Location1.Y=6083.362mil|Location2.Y=6136.638mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3488.933mil|Location2.X=3632.433mil|Location1.Y=6083.362mil|Location2.Y=6136.638mil|Absolute=True">U5_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=7539.315mil|Location1.Y=4255.488mil|Location2.Y=5280.024mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5796.83mil|Location2.X=7539.315mil|Location1.Y=4255.488mil|Location2.Y=5280.024mil|Absolute=True">ULTRASONIC_ADC</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7568.894mil|Location2.X=7922.465mil|Location1.Y=4181.748mil|Location2.Y=4361.067mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7568.894mil|Location2.X=7922.465mil|Location1.Y=4181.748mil|Location2.Y=4361.067mil|Absolute=True">ULTRASONIC_IN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3355.665mil|Location2.X=5198.136mil|Location1.Y=5996.826mil|Location2.Y=6136.638mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3355.665mil|Location2.X=5198.136mil|Location1.Y=5996.826mil|Location2.Y=6136.638mil|Absolute=True">USART1_RX</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.567mil|Location2.X=5217.822mil|Location1.Y=5996.826mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.567mil|Location2.X=5217.822mil|Location1.Y=5996.826mil|Location2.Y=6083.566mil|Absolute=True">USART1_TX</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3347.535mil|Location2.X=7932.465mil|Location1.Y=4792.535mil|Location2.Y=6422.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3347.535mil|Location2.X=7932.465mil|Location1.Y=4792.535mil|Location2.Y=6422.465mil|Absolute=True">USART3_RX</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7341.197mil|Location2.X=7832.465mil|Location1.Y=4792.535mil|Location2.Y=5608.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7341.197mil|Location2.X=7832.465mil|Location1.Y=4792.535mil|Location2.Y=5608.803mil|Absolute=True">USART3_RX_DW</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3347.535mil|Location2.X=7932.465mil|Location1.Y=4892.535mil|Location2.Y=6522.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3347.535mil|Location2.X=7932.465mil|Location1.Y=4892.535mil|Location2.Y=6522.465mil|Absolute=True">USART3_TX</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7341.197mil|Location2.X=7832.465mil|Location1.Y=4892.535mil|Location2.Y=5308.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7341.197mil|Location2.X=7832.465mil|Location1.Y=4892.535mil|Location2.Y=5308.803mil|Absolute=True">USART3_TX_DW</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5277.538mil|Location2.X=7398.803mil|Location1.Y=5451.197mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5277.538mil|Location2.X=7398.803mil|Location1.Y=5451.197mil|Location2.Y=6083.566mil|Absolute=True">USART6_RX</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5297.222mil|Location2.X=7398.803mil|Location1.Y=5351.197mil|Location2.Y=6083.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5297.222mil|Location2.X=7398.803mil|Location1.Y=5351.197mil|Location2.Y=6083.566mil|Absolute=True">USART6_TX</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5937.622mil|Location2.X=9615.07mil|Location1.Y=2648.03mil|Location2.Y=4430.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5937.622mil|Location2.X=9615.07mil|Location1.Y=2648.03mil|Location2.Y=4430.57mil|Absolute=True">VAP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9348.894mil|Location2.X=10598.212mil|Location1.Y=4836.748mil|Location2.Y=6503.493mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9348.894mil|Location2.X=10598.212mil|Location1.Y=4836.748mil|Location2.Y=6503.493mil|Absolute=True">VAP_IN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5951.548mil|Location2.X=10160.07mil|Location1.Y=2634.108mil|Location2.Y=4425.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5951.548mil|Location2.X=10160.07mil|Location1.Y=2634.108mil|Location2.Y=4425.57mil|Absolute=True">VBP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9903.894mil|Location2.X=10598.212mil|Location1.Y=4831.748mil|Location2.Y=6306.642mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9903.894mil|Location2.X=10598.212mil|Location1.Y=4831.748mil|Location2.Y=6306.642mil|Absolute=True">VBP_IN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3148.008mil|Location2.X=9324.512mil|Location1.Y=2373.894mil|Location2.Y=6620mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3148.008mil|Location2.X=9324.512mil|Location1.Y=2373.894mil|Location2.Y=6620mil|Absolute=True">VCC</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5951.268mil|Location2.X=10685.07mil|Location1.Y=2564.236mil|Location2.Y=4430.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5951.268mil|Location2.X=10685.07mil|Location1.Y=2564.236mil|Location2.Y=4430.57mil|Absolute=True">VCP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10433.894mil|Location2.X=10598.212mil|Location1.Y=4831.748mil|Location2.Y=6109.792mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10433.894mil|Location2.X=10598.212mil|Location1.Y=4831.748mil|Location2.Y=6109.792mil|Absolute=True">VCP_IN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5683.894mil|Location2.X=6009.512mil|Location1.Y=4565.664mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5683.894mil|Location2.X=6009.512mil|Location1.Y=4565.664mil|Location2.Y=5233.172mil|Absolute=True">VDDA</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_%E9%85%8D%E7%94%B5%E5%8F%98%E5%8E%8B%E5%99%A8%E6%99%BA%E8%83%BD%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5590.488mil|Location2.X=5746.106mil|Location1.Y=4641.748mil|Location2.Y=5233.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Think\Desktop\PCB_配电变压器智能监测系统_2022-01-25.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5590.488mil|Location2.X=5746.106mil|Location1.Y=4641.748mil|Location2.Y=5233.172mil|Absolute=True">VREF</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
