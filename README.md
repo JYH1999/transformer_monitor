@@ -4,6 +4,10 @@ A transformer monitor system using ADE7878&amp;STM32 with web visualization at t
 # How to use?
 Please read Document/Document(thesis).pdf for detailed instructions.
 
+# Hardware related resource
+The hardware design of the project can be found at the link below:
+https://oshwhub.com/gk1999/pei-dian-bian-ya-qi-zhi-neng-jian-kong-ji-tong
+
 # Reminder
 This project is open source under the GPL-v3 license, please read the LICENCE file for detailed license terms.
 
